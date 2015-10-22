@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="AD_Domain" description="AD Domain" defaultValue="dxdemos.net" tags="AD_Domain">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\mabeeby\\Documents\\GitHub\\Unified-API-Getting-Started-Labs\\ASP\.NET\ MVC\\Completed\\GraphExplorerMVC\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/appSettings/add[@key='ida:Domain']/@value" />
+  </parameter>
+</parameters>
