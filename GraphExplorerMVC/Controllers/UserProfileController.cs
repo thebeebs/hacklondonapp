@@ -18,8 +18,7 @@ namespace GraphExplorerMVC.Controllers
     [Authorize]
     public class UserProfileController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-        private string clientId = ConfigurationManager.AppSettings["ida:ClientId"];
+         private string clientId = ConfigurationManager.AppSettings["ida:ClientId"];
         private string appKey = ConfigurationManager.AppSettings["ida:ClientSecret"];
         private string aadInstance = ConfigurationManager.AppSettings["ida:AADInstance"];
         private string graphResourceID = "https://graph.windows.net";
@@ -73,7 +72,7 @@ namespace GraphExplorerMVC.Controllers
             // get a token for the Graph without triggering any user interaction (from the cache, via multi-resource refresh token, etc)
             ClientCredential clientcred = new ClientCredential(clientId, appKey);
             // initialize AuthenticationContext with the token cache of the currently signed in user, as kept in the app's database
-            AuthenticationContext authenticationContext = new AuthenticationContext(aadInstance + tenantID, new ADALTokenCache(signedInUserID));
+            AuthenticationContext authenticationContext = new AuthenticationContext(aadInstance + tenantID);
             AuthenticationResult authenticationResult = await authenticationContext.AcquireTokenSilentAsync(graphResourceID, clientcred, new UserIdentifier(userObjectID, UserIdentifierType.UniqueId));
             return authenticationResult.AccessToken;
         }
